@@ -21,21 +21,21 @@ export const GameCanvas: React.FC<Props> = ({
 }): React.ReactElement => {
   const reactCanvas = useRef(null)
   useEffect(() => {
-    console.log("useEffect")
     if (reactCanvas.current) {
       const engine = new Engine(reactCanvas.current, antialias, engineOptions, adaptToDeviceRatio)
       const scene = new Scene(engine, sceneOptions)
 
       if (scene.isReady()) {
-        console.log("scene.ready")
         onSceneReady(scene)
       } else {
-        console.log("scene.notReady")
         scene.onReadyObservable.addOnce((scene) => onSceneReady(scene))
       }
 
       engine.runRenderLoop(() => {
-        onRender(scene)
+        if(typeof onRender === "function") {
+          onRender(scene)
+        }
+        scene.render()
       })
 
       const resize = () => {
