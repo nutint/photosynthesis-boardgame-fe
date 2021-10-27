@@ -1,11 +1,11 @@
-import {Engine, Scene} from "babylonjs"
+import {Engine, Scene, EngineOptions, SceneOptions} from "babylonjs"
 import React, {useEffect, useRef} from "react"
 
 type Props = {
   antialias: boolean
-  engineOptions: any
-  adaptToDeviceRatio: boolean
-  sceneOptions: any
+  engineOptions?: EngineOptions
+  adaptToDeviceRatio?: boolean
+  sceneOptions?: SceneOptions
   onRender: (scene: Scene) => void
   onSceneReady: (scene: Scene) => void
 }
