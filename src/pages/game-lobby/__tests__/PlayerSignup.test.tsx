@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import { PlayerSignup } from "../PlayerSignup"
 
-describe("GameLobby", () => {
+describe("PlayerSignup", () => {
   it("should be able to render without error", () => {
     render(<PlayerSignup />)
   })
