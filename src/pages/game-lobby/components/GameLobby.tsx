@@ -10,7 +10,6 @@ export const GameLobby: React.FC<Props> = ({
   onClickCreateRoom,
   rooms
 }):React.ReactElement => (<>
-  <button onClick={onClickCreateRoom}>Create Room</button>
   <div>
     {
       (rooms || []).map(room => (<div key={room.id}>

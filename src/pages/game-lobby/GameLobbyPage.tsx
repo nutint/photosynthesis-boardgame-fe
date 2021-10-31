@@ -10,7 +10,10 @@ export const GameLobbyPage: React.FC = (): React.ReactElement => {
       .getRooms()
       .then(resultRooms => setRooms(resultRooms))
   }, [])
+
+  const onClickCreateRoom = () => { console.log("onClickCreateRoom")}
   return <>
+    <button onClick={onClickCreateRoom}>Create Room</button>
     <GameLobby rooms={rooms} />
   </>
 }

@@ -14,6 +14,12 @@ describe("GameLobbyPage", () => {
       .mockResolvedValue([])
   })
 
+  it("should render create room button", async () => {
+    const { findByRole } = render(<GameLobbyPage/>)
+
+    expect(await findByRole("button")).toBeInTheDocument()
+  })
+
   it("should render without crashing", () => {
     act(() => {
       render(<GameLobbyPage/>)
