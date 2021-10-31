@@ -1,4 +1,4 @@
-type AppConfig = {
+export type AppConfig = {
   mockedResponse: boolean
 }
 
