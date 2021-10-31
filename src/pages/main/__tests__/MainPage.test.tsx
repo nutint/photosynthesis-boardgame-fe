@@ -1,8 +1,7 @@
 import React from "react"
-import {getByRole, render} from "@testing-library/react"
+import { getByRole, render } from "@testing-library/react"
 
 import { MainPage } from "../MainPage"
-import { MainRouter } from "../MainRouter"
 
 jest.mock("../MainRouter", () => ({
   MainRouter: () => <>MainRouter</>
