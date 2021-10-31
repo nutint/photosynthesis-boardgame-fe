@@ -7,17 +7,6 @@ import { MainRouter } from "../MainRouter"
 describe("MainRouter", () => {
   const helloWorldLinkName = "Hello world"
 
-  it(`should render link as ${helloWorldLinkName}`, () => {
-    const history = createMemoryHistory()
-    const { getByText } = render(
-      <Router history={history}>
-        <MainRouter/>
-      </Router>
-    )
-
-    expect(getByText(helloWorldLinkName)).toBeInTheDocument()
-  })
-
   it(`show hello world happened when click at ${helloWorldLinkName}`, () => {
     const history = createMemoryHistory()
     history.push("/")

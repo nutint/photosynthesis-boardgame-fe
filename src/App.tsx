@@ -5,7 +5,7 @@ import { onRender, onSceneReady } from "./game-render"
 import { GameLobbyPage } from "./pages/game-lobby/GameLobbyPage"
 import { AppProvider } from "./providers/AppProvider"
 import { BrowserRouter } from "react-router-dom"
-import { MainRouter } from "./pages/main/MainRouter"
+import { MainPage } from "./pages/main/MainPage"
 
 export const App: React.FC = (): React.ReactElement  => {
   return (
@@ -19,7 +19,7 @@ export const App: React.FC = (): React.ReactElement  => {
         /><br/>
         <GameLobbyPage />
         <BrowserRouter>
-          <MainRouter/>
+          <MainPage/>
         </BrowserRouter>
       </AppProvider>
     </div>
