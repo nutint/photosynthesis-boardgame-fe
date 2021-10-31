@@ -1,10 +1,14 @@
 import React from "react"
 import { MainRouter } from "./MainRouter"
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, useHistory } from "react-router-dom"
 
-export const MainPage: React.FC = (): React.ReactElement => <>
-  <button>Hello world</button><br/>
-  <BrowserRouter>
-    <MainRouter/>
-  </BrowserRouter>
-</>
+export const MainPage: React.FC = (): React.ReactElement => {
+  const history = useHistory()
+  return <>
+    <button onClick={() => history.push("/")}>Home Page</button>
+    <br/>
+    <BrowserRouter>
+      <MainRouter/>
+    </BrowserRouter>
+  </>
+}
