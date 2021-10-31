@@ -2,8 +2,14 @@ import React from "react"
 import { render, screen } from "@testing-library/react"
 import { App } from "./App"
 
-test("renders learn react link", () => {
-  render(<App />)
-  const linkElement = screen.getByText(/learn react/i)
-  expect(linkElement).toBeInTheDocument()
+jest.mock("./GameCanvas", () => ({
+  GameCanvas: (): React.ReactElement => (<>Game Canvas</>)
+}))
+
+describe("App", () => {
+  it("should render game canvas", () => {
+    const { getByText } = render(<App/>)
+
+    expect(getByText(/Game Canvas/)).toBeInTheDocument()
+  })
 })
