@@ -1091,7 +1091,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.7.6":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.0.tgz#e27b977f2e2088ba24748bf99b5e1dece64e4f0b"
   integrity sha512-Nht8L0O8YCktmsDV6FqFue7vQLRx3Hb0B37lS5y0jDRqRxlBG4wIJHnf9/bgSE2UyipKFA01YtS+npRdTWBUyw==
@@ -1735,7 +1735,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/history@*":
+"@types/history@*", "@types/history@^4.7.9":
   version "4.7.9"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.9.tgz#1cfb6d60ef3822c589f18e70f8b12f9a28ce8724"
   integrity sha512-MUc6zSmU3tEVnkQ78q0peeEjKWPUADMlC/t++2bI8WnAG2tvYRPIgHG8lWkXwqc8MsUF6Z2MOf+Mh5sazOmhiQ==
@@ -5524,6 +5524,13 @@ history@^4.9.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
+
+history@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.0.1.tgz#de35025ed08bce0db62364b47ebbf9d97b5eb06a"
+  integrity sha512-5qC/tFUKfVci5kzgRxZxN5Mf1CV8NmJx9ByaPX0YTLx5Vz3Svh7NYp6eA4CpDq4iA9D0C1t8BNIfvQIrUI3mVw==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
