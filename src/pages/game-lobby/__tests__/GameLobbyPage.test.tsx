@@ -15,11 +15,15 @@ describe("GameLobbyPage", () => {
   })
 
   it("should render without crashing", () => {
-    render(<GameLobbyPage/>)
+    act(() => {
+      render(<GameLobbyPage/>)
+    })
   })
 
   it("should call api correctly", () => {
-    render(<GameLobbyPage/>)
+    act(() => {
+      render(<GameLobbyPage/>)
+    })
 
     expect(GameService.getRooms).toHaveBeenCalled()
   })
