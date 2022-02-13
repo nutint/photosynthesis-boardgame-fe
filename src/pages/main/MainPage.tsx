@@ -4,8 +4,9 @@ import { BrowserRouter, useHistory } from "react-router-dom"
 
 export const MainPage: React.FC = (): React.ReactElement => {
   const history = useHistory()
+
   return <>
-    <button onClick={() => history.push("/")}>Home Page</button>
+    <button onClick={() => history.push("/login")}>Home Page</button>
     <br/>
     <BrowserRouter>
       <MainRouter/>

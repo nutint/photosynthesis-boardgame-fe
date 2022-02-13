@@ -7,11 +7,12 @@ import { MainPage } from "../MainPage"
 jest.mock("../MainRouter", () => ({
   MainRouter: () => <>MainRouter</>
 }))
+const mockedHistory = {
+  push: jest.fn()
+}
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
-  useHistory: () => ({
-    push: jest.fn()
-  })
+  useHistory: jest.fn(() => mockedHistory)
 }))
 
 describe("MainPage", () => {
@@ -34,14 +35,14 @@ describe("MainPage", () => {
       expect(getByRole("button")).toHaveTextContent("Home Page")
     })
 
-    it.skip("should push correctly when click at Home Page button", () => {
+    it("should push correctly when click at Home Page button", () => {
       const { getByRole } = render(<MainPage/>)
 
       act(() => {
         fireEvent.click(getByRole("button"))
       })
 
-      expect(ReactRouterDom.useHistory().push)
+      expect(mockedHistory.push)
         .toHaveBeenCalledWith("/")
     })
 
