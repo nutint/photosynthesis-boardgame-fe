@@ -1,17 +1,17 @@
 export enum Score {
-  Love,
-  Fifteen,
-  Thirty,
-  Forty,
+  Love= "Love",
+  Fifteen = "Fifteen",
+  Thirty = "Thirty",
+  Forty = "Forty",
 }
 
 export enum GameState {
-  Normal,
-  Deuce,
-  Player1Advantage,
-  Player1Won,
-  Player2Advantage,
-  Player2Won,
+  Normal= "Normal",
+  Deuce = "Deuce",
+  Player1Advantage = "Player1Advantage",
+  Player1Won = "Player1Won",
+  Player2Advantage = "Player2Advantage",
+  Player2Won = "Player2Won",
 }
 
 export const incrementScore = (score: Score): Score => {
@@ -35,7 +35,10 @@ export const TennisScoreCalculator = (gameState?: GameState, firstPlayerScore?: 
         return TennisScoreCalculator(GameState.Player1Won)
       if (gameState === GameState.Player2Advantage)
         return TennisScoreCalculator(GameState.Deuce)
-      return TennisScoreCalculator(undefined, incrementScore(calculatedFirstPlayerScore), calculatedSecondPlayerScore)
+      if ([Score.Love, Score.Fifteen, Score.Thirty].includes(calculatedSecondPlayerScore) &&
+         calculatedFirstPlayerScore === Score.Forty)
+        return TennisScoreCalculator(GameState.Player1Won)
+      return TennisScoreCalculator(GameState.Normal, incrementScore(calculatedFirstPlayerScore), calculatedSecondPlayerScore)
     },
     secondPlayerDidScore: () => {
       if(calculatedFirstPlayerScore === Score.Forty && calculatedSecondPlayerScore === Score.Thirty)
@@ -46,7 +49,10 @@ export const TennisScoreCalculator = (gameState?: GameState, firstPlayerScore?: 
         return TennisScoreCalculator(GameState.Player2Won)
       if (gameState === GameState.Player1Advantage)
         return TennisScoreCalculator(GameState.Deuce)
-      return TennisScoreCalculator(undefined, calculatedFirstPlayerScore, incrementScore(calculatedSecondPlayerScore))
+      if ([Score.Love, Score.Fifteen, Score.Thirty].includes(calculatedFirstPlayerScore) &&
+        calculatedSecondPlayerScore === Score.Forty)
+        return TennisScoreCalculator(GameState.Player2Won)
+      return TennisScoreCalculator(GameState.Normal, calculatedFirstPlayerScore, incrementScore(calculatedSecondPlayerScore))
     }
   })
 }

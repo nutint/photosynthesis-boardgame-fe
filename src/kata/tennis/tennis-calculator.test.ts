@@ -131,4 +131,98 @@ describe("TennisScoreCalculator", () => {
       expect(actual.gameState).toEqual(GameState.Player2Won)
     })
   })
+
+  describe("play with scenario", () => {
+    it("should calculate deuce correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+
+
+      expect(actual.gameState).toEqual(GameState.Deuce)
+    })
+
+    it("should calculate player1 advantage correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .firstPlayerDidScore()
+
+
+      expect(actual.gameState).toEqual(GameState.Player1Advantage)
+    })
+
+    it("should calculate player1 advantage correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+
+      expect(actual.gameState).toEqual(GameState.Player2Advantage)
+    })
+
+    it("should calculate win from deuce correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+
+      expect(actual.gameState).toEqual(GameState.Player2Won)
+    })
+
+    it("should calculate 2nd deuce correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .firstPlayerDidScore()
+
+      expect(actual.gameState).toEqual(GameState.Deuce)
+    })
+
+    it("should calculate case player 1 can win without deuce correctly", () => {
+      const actual = TennisScoreCalculator()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .firstPlayerDidScore()
+
+      expect(actual.gameState).toEqual(GameState.Player1Won)
+    })
+
+    it("should calculate case player 2 can win without deuce correctly", () => {
+      const actual = TennisScoreCalculator()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .secondPlayerDidScore()
+        .firstPlayerDidScore()
+        .firstPlayerDidScore()
+        .secondPlayerDidScore()
+
+      expect(actual.gameState).toEqual(GameState.Player2Won)
+    })
+  })
 })
