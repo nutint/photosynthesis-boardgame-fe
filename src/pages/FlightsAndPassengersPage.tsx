@@ -1,7 +1,11 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import {Link,} from "react-router-dom"
 
-export const FlightsAndPassengersPage = () => {
+type Props = {
+  foo?: string
+}
+export const FlightsAndPassengersPage = (props: Props) => {
+  console.log("props", props)
   return <>
     Flights and Passengers<br/>
     <Link to={"/checkin/checkin-confirmation"}>Checkin Confirmation</Link><br/>

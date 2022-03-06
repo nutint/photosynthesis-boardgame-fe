@@ -12,9 +12,12 @@ export const Checkin = () => {
     <Link to={"/login"}>Log out</Link><br/>
     <br/>
     <Switch>
-      <Route exact path={`${path}/flights-and-passengers`}>
-        <FlightsAndPassengersPage/>
-      </Route>
+      <Route exact path={`${path}/flights-and-passengers`}
+        render={props => {
+          console.log("states", props.location.state)
+          return FlightsAndPassengersPage(props as any)
+        }
+        }/>
       <Route exact path={`${path}/checkin-confirmation`}>
         <CheckinConfirmation/>
       </Route>
