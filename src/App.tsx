@@ -14,7 +14,7 @@ export const App: React.FC = (): React.ReactElement  => {
             <Route exact path="/login">
               <LoginPage/>
             </Route>
-            <Route exact path="/checkin">
+            <Route path="/checkin">
               <Checkin/>
             </Route>
           </Switch>

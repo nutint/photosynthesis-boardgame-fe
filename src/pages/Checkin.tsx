@@ -1,17 +1,25 @@
-import {Route, Switch, useRouteMatch} from "react-router-dom"
+import {Link, Route, Switch, useRouteMatch} from "react-router-dom"
 import React from "react"
+import {FlightsAndPassengersPage} from "./FlightsAndPassengersPage"
+import {CheckinConfirmation} from "./CheckinConfirmation"
+import {BoardingPassAndBags} from "./BoardingPassAndBags"
 
 export const Checkin = () => {
   const {path, url} = useRouteMatch()
   return <>
     <>Checkin</>
     <br/>
+    <Link to={"/login"}>Log out</Link><br/>
+    <br/>
     <Switch>
-      <Route exact path={path}>
-        <>Default</>
+      <Route exact path={`${path}/flights-and-passengers`}>
+        <FlightsAndPassengersPage/>
       </Route>
-      <Route path={`${path}/flights-and-passengers`}>
-        <>Flights and Passengers</>
+      <Route exact path={`${path}/checkin-confirmation`}>
+        <CheckinConfirmation/>
+      </Route>
+      <Route exact path={`${path}/boarding-pass-and-bags`}>
+        <BoardingPassAndBags/>
       </Route>
     </Switch>
   </>
