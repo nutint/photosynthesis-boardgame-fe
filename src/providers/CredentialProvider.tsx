@@ -1,5 +1,7 @@
 import React from "react"
 import {useAppProvider} from "./AppProvider"
+import {useHistory} from "react-router-dom"
+
 type CredentialContextProps = {
   bookingCredential: string | null
 }
@@ -12,8 +14,16 @@ type ProviderProps = {
 }
 export const CredentialProvider: React.FC<ProviderProps> = (props): React.ReactElement => {
   const { getSessionStorage } = useAppProvider()
+  const history = useHistory()
+
+  const bookingCredential = getSessionStorage("bookingCredential")
+  if(bookingCredential === null) {
+    history.push("/login")
+    return <></>
+  }
+
   return <CredentialContext.Provider value={{
-    bookingCredential: getSessionStorage("bookingCredential")
+    bookingCredential
   }}>{ props.children }</CredentialContext.Provider>
 }
 
