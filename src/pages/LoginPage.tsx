@@ -10,7 +10,7 @@ const LoginPage: React.FC = (): React.ReactElement => {
       password: "password"
     }
     login(credential)
-      .then(result => {
+      .then(() => {
         history.push("/checkin/flights-and-passengers", credential)
       })
   }

@@ -1,3 +1,3 @@
 import React from "react"
 
-export const BoardingPassAndBags = () => <>BoardingPass and Bags</>
+export const BoardingPassAndBags: React.FC = (): React.ReactElement => <>BoardingPass and Bags</>

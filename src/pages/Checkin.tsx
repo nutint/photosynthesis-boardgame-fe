@@ -4,20 +4,17 @@ import {FlightsAndPassengersPage} from "./FlightsAndPassengersPage"
 import {CheckinConfirmation} from "./CheckinConfirmation"
 import {BoardingPassAndBags} from "./BoardingPassAndBags"
 
-export const Checkin = () => {
-  const {path, url} = useRouteMatch()
+export const Checkin: React.FC = (): React.ReactElement => {
+  const {path} = useRouteMatch()
   return <>
     <>Checkin</>
     <br/>
     <Link to={"/login"}>Log out</Link><br/>
     <br/>
     <Switch>
-      <Route exact path={`${path}/flights-and-passengers`}
-        render={props => {
-          console.log("states", props.location.state)
-          return FlightsAndPassengersPage(props as any)
-        }
-        }/>
+      <Route exact path={`${path}/flights-and-passengers`}>
+        <FlightsAndPassengersPage/>
+      </Route>
       <Route exact path={`${path}/checkin-confirmation`}>
         <CheckinConfirmation/>
       </Route>
