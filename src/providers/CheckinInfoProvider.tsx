@@ -28,7 +28,7 @@ export const CheckinInfoProvider: React.FC<ProviderProps> = ({children}): React.
           })
         })
         .catch(() => {
-          history.push("/checkin")
+          history.push("/login")
         })
     })()
   }, [history])

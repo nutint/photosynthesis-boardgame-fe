@@ -11,7 +11,13 @@ export const App: React.FC = (): React.ReactElement  => {
   return (
     <div className="App">
       <AppProvider sessionStorage={{
-        setItem: (key: string, value: any) => window.sessionStorage.setItem(key, JSON.stringify(value)),
+        setItem: (key: string, value: any) => {
+          if(value === null) {
+            window.sessionStorage.removeItem(key)
+          } else {
+            window.sessionStorage.setItem(key, JSON.stringify(value))
+          }
+        },
         getItem: (key: string) => JSON.parse(window.sessionStorage.getItem(key) as any),
       }}>
         <HashRouter>

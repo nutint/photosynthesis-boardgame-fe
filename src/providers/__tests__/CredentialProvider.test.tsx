@@ -1,7 +1,7 @@
 import { CredentialProvider, useCredential } from "../CredentialProvider"
 import React from "react"
 import {AppProvider} from "../AppProvider"
-import {render} from "@testing-library/react"
+import {fireEvent, render} from "@testing-library/react"
 import * as ReactRouterDom from "react-router-dom"
 import {MemoryRouter} from "react-router-dom"
 
@@ -11,10 +11,11 @@ jest.mock("react-router-dom", () => ({
 }))
 
 const InnerComponent: React.FC = (): React.ReactElement => {
-  const { bookingCredential } = useCredential()
+  const { bookingCredential, logout } = useCredential()
   return <>
     <span>Inner Component</span>
     <span>{ bookingCredential }</span>
+    <button onClick={logout}>Log out</button>
   </>
 }
 
@@ -66,5 +67,15 @@ describe("CredentialProvider", () => {
     render(<TestableCredentialProvider/>)
 
     expect(mockedHistory.push).toHaveBeenCalledWith("/login")
+  })
+
+  it("should be able to logout", () => {
+    const { getByRole } = render(<TestableCredentialProvider/>)
+
+    const logoutButton = getByRole("button", { name: "Log out" })
+
+    fireEvent.click(logoutButton)
+
+    expect(mockedSessionStorage.setItem).toHaveBeenCalledWith("loginCredential", null)
   })
 })

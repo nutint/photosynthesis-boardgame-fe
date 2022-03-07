@@ -5,7 +5,7 @@ import {useAppProvider} from "../providers/AppProvider"
 
 const LoginPage: React.FC = (): React.ReactElement => {
   const history = useHistory()
-  const { setSessionStorage } = useAppProvider()
+  const { setSessionStorage, getSessionStorage } = useAppProvider()
   const onLogin = () => {
     const credential = {
       username: "username",
@@ -17,6 +17,9 @@ const LoginPage: React.FC = (): React.ReactElement => {
         history.push("/checkin/flights-and-passengers")
       })
   }
+
+  const bookingCredential = getSessionStorage("loginCredential")
+  console.log("bookingCredential", bookingCredential)
   return <>
     <>This is Login Page</>
     <button onClick={onLogin}>Login</button>

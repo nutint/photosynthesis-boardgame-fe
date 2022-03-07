@@ -51,7 +51,7 @@ describe("CheckinInfoProvider", () => {
 
     render(<TestableCheckinInfoProvider/>)
 
-    await waitFor(() => expect(mockedHistory.push).toHaveBeenCalledWith("/checkin"))
+    await waitFor(() => expect(mockedHistory.push).toHaveBeenCalledWith("/login"))
   })
 
   it("should be able to access passengers when success to get checkin info", async () => {
