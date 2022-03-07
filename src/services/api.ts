@@ -10,6 +10,6 @@ type LoginCredential = {
 
 export const login = async (loginCredential: LoginCredential): Promise<LoginResult> => {
   return {
-    bookingCredential: ""
+    bookingCredential: "mockedBookingCredential"
   }
 }

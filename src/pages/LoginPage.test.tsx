@@ -3,6 +3,7 @@ import React from "react"
 import {fireEvent, render, waitFor } from "@testing-library/react"
 import * as ReactRouterDom from "react-router-dom"
 import * as API from "../services/api"
+import {AppProvider} from "../providers/AppProvider"
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -14,9 +15,16 @@ jest.mock("../services/api", () => ({
   login: jest.fn(),
 }))
 
-const TestableLoginPage = () => <ReactRouterDom.MemoryRouter>
-  <LoginPage/>
-</ReactRouterDom.MemoryRouter>
+const mockedSessionStorage = {
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+}
+
+const TestableLoginPage = () => <AppProvider sessionStorage={mockedSessionStorage}>
+  <ReactRouterDom.MemoryRouter>
+    <LoginPage/>
+  </ReactRouterDom.MemoryRouter>
+</AppProvider>
 
 describe("LoginPage", () => {
 
@@ -64,11 +72,21 @@ describe("LoginPage", () => {
     const loginButton = getByRole("button", { name: "Login" })
     fireEvent.click(loginButton)
 
-    const credential = {
-      username: "username",
-      password: "password"
-    }
     await waitFor(() => expect(mockedHistory.push)
-      .toHaveBeenCalledWith("/checkin/flights-and-passengers", credential))
+      .toHaveBeenCalledWith("/checkin/flights-and-passengers"))
+  })
+
+  it("should save credential correctly", async () => {
+    const { getByRole } = render(<TestableLoginPage/>)
+
+    const loginButton = getByRole("button", { name: "Login" })
+    fireEvent.click(loginButton)
+
+    await waitFor(
+      () => expect(mockedSessionStorage.setItem)
+        .toHaveBeenCalledWith(
+          "loginCredential",
+          { bookingCredential: "bookingCredential" }
+        ))
   })
 })
