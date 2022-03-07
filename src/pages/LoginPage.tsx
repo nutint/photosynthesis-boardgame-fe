@@ -1,19 +1,22 @@
 import {useHistory} from "react-router-dom"
 import React from "react"
+import { login } from "../services/api"
 
 const LoginPage: React.FC = (): React.ReactElement => {
   const history = useHistory()
-  const login = () => {
+  const onLogin = () => {
     const credential = {
       username: "username",
       password: "password"
     }
-    console.log("credential = ", credential)
-    history.push("/checkin/flights-and-passengers", credential)
+    login(credential)
+      .then(result => {
+        history.push("/checkin/flights-and-passengers", credential)
+      })
   }
   return <>
     <>Login</>
-    <button onClick={login}>Login</button>
+    <button onClick={onLogin}>Login</button>
   </>
 }
 
