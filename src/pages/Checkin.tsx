@@ -1,19 +1,17 @@
-import {Link, Route, Switch, useHistory, useRouteMatch} from "react-router-dom"
+import {Route, Switch, useRouteMatch} from "react-router-dom"
 import React from "react"
 import {FlightsAndPassengersPage} from "./FlightsAndPassengersPage"
 import {CheckinConfirmation} from "./CheckinConfirmation"
 import {BoardingPassAndBags} from "./BoardingPassAndBags"
+import {useCredential} from "../providers/CredentialProvider"
 
 export const Checkin: React.FC = (): React.ReactElement => {
-  const history = useHistory()
+  const { logout } = useCredential()
   const {path} = useRouteMatch()
-  const onLogout = () => {
-    history.push("/login")
-  }
   return <>
     <>Checkin</>
     <br/>
-    <button onClick={onLogout}>Log out</button><br/>
+    <button onClick={logout}>Log out</button><br/>
     <br/>
     <Switch>
       <Route exact path={`${path}/flights-and-passengers`}>
