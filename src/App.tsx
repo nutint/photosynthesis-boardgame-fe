@@ -9,7 +9,7 @@ export const App: React.FC = (): React.ReactElement  => {
   console.log("app rendering")
   return (
     <div className="App">
-      <AppProvider>
+      <AppProvider sessionStorage={window.sessionStorage}>
         <HashRouter>
           <Switch>
             <Route exact path="/login">
