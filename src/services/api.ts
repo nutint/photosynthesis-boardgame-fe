@@ -13,3 +13,10 @@ export const login = async (loginCredential: LoginCredential): Promise<LoginResu
     bookingCredential: "mockedBookingCredential"
   }
 }
+
+type CheckinResult = {
+  success: boolean
+}
+export const getCheckinInfo = async (): Promise<CheckinResult> => {
+  return {success: true}
+}
