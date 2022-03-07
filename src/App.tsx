@@ -1,15 +1,16 @@
 import React from "react"
 import "./App.css"
 import {AppProvider} from "./providers/AppProvider"
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {HashRouter, Route, Switch} from "react-router-dom"
 import {Checkin} from "./pages/Checkin"
 import {LoginPage} from "./pages/LoginPage"
 
 export const App: React.FC = (): React.ReactElement  => {
+  console.log("app rendering")
   return (
     <div className="App">
       <AppProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Switch>
             <Route exact path="/login">
               <LoginPage/>
@@ -18,7 +19,7 @@ export const App: React.FC = (): React.ReactElement  => {
               <Checkin/>
             </Route>
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
       </AppProvider>
     </div>
   )

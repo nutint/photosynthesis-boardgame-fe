@@ -24,5 +24,5 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({children, 
     setSessionStorage: (key: string, value: any) => window.sessionStorage.setItem(key, value),
     getSessionStorage: (key: string) => window.sessionStorage.getItem(key)
   }
-  return <AppContext.Provider value={appProvider}/>
+  return <AppContext.Provider value={appProvider}>{children}</AppContext.Provider>
 }

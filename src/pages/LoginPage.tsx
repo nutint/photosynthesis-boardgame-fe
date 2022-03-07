@@ -11,11 +11,11 @@ const LoginPage: React.FC = (): React.ReactElement => {
     }
     login(credential)
       .then(() => {
-        history.push("/checkin/flights-and-passengers", credential)
+        history.push("/checkin/flights-and-passengers")
       })
   }
   return <>
-    <>Login</>
+    <>This is Login Page</>
     <button onClick={onLogin}>Login</button>
   </>
 }
