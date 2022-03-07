@@ -10,7 +10,10 @@ import {CheckinInfoProvider} from "./providers/CheckinInfoProvider"
 export const App: React.FC = (): React.ReactElement  => {
   return (
     <div className="App">
-      <AppProvider sessionStorage={window.sessionStorage}>
+      <AppProvider sessionStorage={{
+        setItem: (key: string, value: any) => window.sessionStorage.setItem(key, JSON.stringify(value)),
+        getItem: (key: string) => JSON.parse(window.sessionStorage.getItem(key) as any),
+      }}>
         <HashRouter>
           <Switch>
             <Route exact path="/login">

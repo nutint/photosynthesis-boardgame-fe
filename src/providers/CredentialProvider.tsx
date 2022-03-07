@@ -16,7 +16,8 @@ export const CredentialProvider: React.FC<ProviderProps> = (props): React.ReactE
   const { getSessionStorage } = useAppProvider()
   const history = useHistory()
 
-  const bookingCredential = getSessionStorage("bookingCredential")
+  const bookingCredential = getSessionStorage("loginCredential")
+
   if(bookingCredential === null) {
     history.push("/login")
     return <></>
